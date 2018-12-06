@@ -5,10 +5,12 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-/**import org.openqa.selenium.chrome.ChromeDriver;**/
+import org.openqa.selenium.chrome.ChromeDriver;
 
+/**
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+**/
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -20,27 +22,29 @@ import org.junit.Assert;
 public class Login {
 	WebDriver driver;
 
-	@Before
-	public void setup_firefox() {
-		System.setProperty("webdriver.gecko.driver", "C:\\DRIVERS\\geckodriver.exe");
-		FirefoxOptions firefoxOptions = new FirefoxOptions();
-		firefoxOptions.setCapability("marionette", true);
-		this.driver = new FirefoxDriver(firefoxOptions);
-		this.driver.manage().window().maximize();
-		this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-		this.driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
-	}
-
 	/**
-	 * @Before public void setup_chrome() {
-	 *         System.setProperty("WebDriver.chrome.driver",
-	 *         "C:\\DRIVERS\\chromedriver.exe"); this.driver = new ChromeDriver();
+	 * @Before
+	 * 
+	 * 		public void setup_firefox() {
+	 *         System.setProperty("webdriver.gecko.driver",
+	 *         "C:\\DRIVERS\\geckodriver.exe"); FirefoxOptions firefoxOptions = new
+	 *         FirefoxOptions(); firefoxOptions.setCapability("marionette", true);
+	 *         this.driver = new FirefoxDriver(firefoxOptions);
 	 *         this.driver.manage().window().maximize();
 	 *         this.driver.manage().timeouts().pageLoadTimeout(60,
 	 *         TimeUnit.SECONDS);
 	 *         this.driver.manage().timeouts().setScriptTimeout(60,
 	 *         TimeUnit.SECONDS); }
 	 **/
+
+	@Before
+	public void setup_chrome() {
+		System.setProperty("WebDriver.chrome.driver", "C:\\DRIVERS\\chromedriver.exe");
+		this.driver = new ChromeDriver();
+		this.driver.manage().window().maximize();
+		this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+		this.driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
+	}
 
 	@After
 	public void tearDown() throws InterruptedException {
